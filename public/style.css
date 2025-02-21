@@ -1,0 +1,290 @@
+/* File: public/style.css */
+/* Rose Pine–Inspired Futuristic Theme with Light/Dark Mode & Background Animation */
+
+/* Light mode variables */
+:root {
+  --bg-color: #faf4ed; /* Light background */
+  --header-bg: #ffffff;
+  --text-color: #575279;
+  --accent-color: #e2c044; /* Rose Pine Gold (yellow) */
+  --secondary-accent: #5a7fbc; /* Rose Pine Blue */
+  --card-bg: #ffffff;
+  --button-bg: #e2c044;
+  --button-hover: #d1b039;
+  --tab-bg: #f2e9de;
+  --tab-hover: #e0d6cb;
+  --tab-active: var(--secondary-accent);
+  --tooltip-bg: #ffffff;
+  --tooltip-border: #d1b039;
+}
+
+/* Dark mode variables */
+body.dark-mode {
+  --bg-color: #191724; /* Dark background */
+  --header-bg: #1f1d2e;
+  --text-color: #e0def4;
+  --accent-color: var(--secondary-accent); /* Blue */
+  --secondary-accent: #e2c044; /* Gold */
+  --card-bg: #26233a;
+  --button-bg: var(--accent-color);
+  --button-hover: #4a659e;
+  --tab-bg: #403d52;
+  --tab-hover: #5a5569;
+  --tab-active: var(--secondary-accent);
+  --tooltip-bg: #26233a;
+  --tooltip-border: var(--secondary-accent);
+}
+
+/* Global Styles */
+body {
+  font-family: "Roboto", sans-serif;
+  margin: 0;
+  background: var(--bg-color);
+  color: var(--text-color);
+  transition:
+    background 0.3s,
+    color 0.3s;
+  position: relative;
+  overflow-x: hidden;
+}
+
+/* Animated background with subtle shifting colors */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(
+    circle at center,
+    var(--accent-color),
+    var(--secondary-accent)
+  );
+  opacity: 0.05;
+  z-index: -2;
+  animation: bgShift 30s infinite linear;
+}
+
+@keyframes bgShift {
+  0% {
+    transform: translate(0, 0) scale(1);
+  }
+  50% {
+    transform: translate(-25%, -25%) scale(1.2);
+  }
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+}
+
+header {
+  text-align: center;
+  padding: 20px 0;
+  background: var(--header-bg);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.header-inner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+
+h1 {
+  margin: 0;
+  font-family: "Orbitron", sans-serif;
+  font-size: 2.2em;
+  color: var(--secondary-accent);
+}
+
+header p {
+  margin: 10px 0 0;
+  font-size: 1em;
+}
+
+main {
+  padding: 20px;
+  max-width: 900px;
+  margin: 20px auto;
+}
+
+/* Input Section */
+#inputSection {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+#inputSection input {
+  padding: 12px 15px;
+  font-size: 1em;
+  width: 300px;
+  border: none;
+  border-radius: 4px;
+  margin-right: 10px;
+}
+
+#inputSection button {
+  padding: 12px 20px;
+  font-size: 1em;
+  border: none;
+  border-radius: 4px;
+  background: var(--button-bg);
+  color: #fff;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+#inputSection button:hover {
+  background: var(--button-hover);
+}
+
+/* Theme Toggle Button (Sun/Moon Switch) */
+#themeToggle {
+  padding: 8px 15px;
+  font-size: 1.2em;
+  border: none;
+  border-radius: 4px;
+  background: var(--button-bg);
+  color: #fff;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+#themeToggle:hover {
+  background: var(--button-hover);
+}
+
+/* Tabs */
+#tabs {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+#tabs .tab {
+  padding: 12px 25px;
+  border: none;
+  background: var(--tab-bg);
+  color: #fff;
+  font-weight: 500;
+  border-radius: 4px 4px 0 0;
+  margin: 0 5px;
+  cursor: pointer;
+  transition: background 0.3s;
+  position: relative;
+}
+
+#tabs .tab:hover {
+  background: var(--tab-hover);
+}
+
+#tabs .tab.active {
+  background: var(--tab-active);
+}
+
+/* Layer Content */
+#layerContent {
+  background: #fff;
+  border-radius: 0 4px 4px 4px;
+  padding: 25px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  min-height: 300px;
+  position: relative;
+  transition: background 0.3s;
+}
+
+body.dark-mode #layerContent {
+  background: var(--card-bg);
+}
+
+/* Card / Box Style */
+.card {
+  background: var(--card-bg);
+  border-left: 6px solid var(--secondary-accent);
+  border-radius: 4px;
+  padding: 20px;
+  margin-bottom: 20px;
+  opacity: 0;
+  animation: fadeIn 0.5s forwards;
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+  }
+}
+
+.card h3 {
+  margin-top: 0;
+  color: var(--secondary-accent);
+}
+
+.card ul {
+  list-style: none;
+  padding: 0;
+}
+
+.card ul li {
+  background: var(--bg-color);
+  padding: 8px 12px;
+  margin: 6px 0;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Navigation */
+#navigation {
+  text-align: center;
+  margin-top: 20px;
+}
+
+#navigation button {
+  padding: 12px 25px;
+  font-size: 1em;
+  border: none;
+  border-radius: 4px;
+  background: var(--secondary-accent);
+  color: #fff;
+  cursor: pointer;
+  transition: background 0.3s;
+  margin: 0 10px;
+}
+
+#navigation button:disabled {
+  background: var(--tab-bg);
+  cursor: not-allowed;
+}
+
+#navigation button:hover:not(:disabled) {
+  background: var(--tab-hover);
+}
+
+/* Tooltip styling with scrollable content */
+#tooltip {
+  position: absolute;
+  background: var(--tooltip-bg);
+  border: 1px solid var(--tooltip-border);
+  padding: 12px;
+  box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.3);
+  border-radius: 4px;
+  font-size: 0.9em;
+  color: var(--text-color);
+  max-width: 300px;
+  max-height: 200px;
+  overflow-y: auto;
+  z-index: 1000;
+  display: none;
+  line-height: 1.4;
+}
+
+#tooltip strong {
+  color: var(--secondary-accent);
+}
+
+/* Style for info elements (inside cards) that trigger tooltips */
+.info {
+  border-bottom: 1px dotted var(--secondary-accent);
+  cursor: help;
+}

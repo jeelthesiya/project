@@ -1,0 +1,65 @@
+<!-- File: public/index.html -->
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Interactive Network Stack Simulation</title>
+    <!-- Google Fonts for a futuristic look -->
+    <link
+      href="https://fonts.googleapis.com/css?family=Orbitron:400,500,700|Roboto:400,500,700"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header>
+      <div class="header-inner">
+        <h1>Interactive Network Stack Simulation</h1>
+        <button id="themeToggle">🌜</button>
+      </div>
+      <p>
+        Enter your message and step through each layer of the network stack to
+        see detailed header calculations and interactive info.
+      </p>
+    </header>
+    <main>
+      <!-- User Input Section -->
+      <div id="inputSection">
+        <input type="text" id="userMessage" placeholder="Enter your message" />
+        <button id="startSimulationBtn">Start Simulation</button>
+      </div>
+
+      <!-- Simulation Section -->
+      <div id="simulationSection" style="display: none">
+        <div id="tabs">
+          <button class="tab active" data-step="0" data-layer="Application">
+            Application
+          </button>
+          <button class="tab" data-step="1" data-layer="Transport">
+            Transport
+          </button>
+          <button class="tab" data-step="2" data-layer="Network">
+            Network
+          </button>
+          <button class="tab" data-step="3" data-layer="Data Link">
+            Link Layer
+          </button>
+          <button class="tab" data-step="4" data-layer="Physical">
+            Physical
+          </button>
+        </div>
+        <div id="layerContent">
+          <!-- Dynamic content goes here -->
+        </div>
+        <div id="navigation">
+          <button id="prevStepBtn" disabled>Previous</button>
+          <button id="nextStepBtn">Next Step</button>
+        </div>
+      </div>
+    </main>
+    <!-- Tooltip container -->
+    <div id="tooltip"></div>
+    <script src="script.js"></script>
+  </body>
+</html>
